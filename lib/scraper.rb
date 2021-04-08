@@ -42,18 +42,26 @@ class Scraper
     biographies = []
     student_bio = doc.css("div.description-holder")
     student_bio.each { | stu_card | biographies << stu_card.children.text }
-
+    student_info = { }
+    urls.each do | url | 
+      if url.include? "twitter"
+        student_info[:twitter] = "http#{url}"
+      elsif url.include? "linked"
+        student_info[:linkedin] = "http#{url}"
+      elsif url.include? "github"
+        student_info[:github] = "http#{url}"
+      elsif url.include? ".com"
+        student_info[:blog] = "http#{url}"
+      end
+    end
     
    
     # biographies.each_with_index do | info, index |
-       binding.pry
-      student_info = {  :bio => biographies[0].strip,
-                        :twitter => "http#{urls[1]}",
-                        :linkedin => "http#{urls[2]}", # 1
-                        :github => "http#{urls[3]}", 
-                        :blog => "http#{urls[4]}",
-                        :profile_quote => quotes[0] }
-    
+    #  binding.pry
+    student_info[:bio] = biographies[0].strip
+                      
+    student_info[:profile_quote] = quotes[0]
+  
     student_info
     # binding.pry
   end

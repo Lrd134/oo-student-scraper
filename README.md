@@ -85,7 +85,8 @@ Here's a look at the desired behavior:
 
 ```ruby
 Scraper.scrape_index_page(index_url)
-# => [
+# => 
+      [
         {:name => "Abby Smith", :location => "Brooklyn, NY", :profile_url => "students/abby-smith.html"},
         {:name => "Joe Jones", :location => "Paris, France", :profile_url => "students/joe-jonas.html"},
         {:name => "Carlos Rodriguez", :location => "New York, NY", :profile_url => "students/carlos-rodriguez.html"},
